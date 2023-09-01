@@ -17,6 +17,28 @@
         "command": "md-editor-helper.helloWorld",
         "title": "Hello World"
       }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "md-editor-helper.helloWorld",
+          "alt": "md-editor-helper.helloWorld",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "md-editor-helper.helloWorld",
+          "alt": "md-editor-helper.helloWorld",
+          "group": "navigation"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "markdown",
+        "path": "./snippets/snippets.json"
+      }
     ]
   },
   "scripts": {
