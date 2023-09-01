@@ -61,5 +61,6 @@
     "mocha": "^10.2.0",
     "typescript": "^5.1.3",
     "@vscode/test-electron": "^2.3.2"
-  }
+  },
+  "repository": "https://github.com/shadowprompt/md-editor-helper.git"
 }
