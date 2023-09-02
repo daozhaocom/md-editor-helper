@@ -130,6 +130,7 @@ dist
 .pnp.*
 
 .vscode
+.idea
 out
 dist
 node_modules
