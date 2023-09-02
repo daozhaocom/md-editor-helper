@@ -131,6 +131,7 @@ dist
 
 .vscode
 .idea
+.DS_Store
 out
 dist
 node_modules

@@ -1,8 +1,9 @@
 {
   "name": "md-editor-helper",
   "displayName": "md-editor-helper",
-  "description": "Help to write markdown",
-  "version": "0.0.1",
+  "description": "Writing markdown easier, make markdown stronger",
+  "icon": "./images/icon128x128.png",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -63,5 +64,5 @@
     "@vscode/test-electron": "^2.3.2"
   },
   "publisher": "Daozhao",
-  "repository": "https://github.com/shadowprompt/md-editor-helper.git"
+  "repository": "https://github.com/daozhaocom/md-editor-helper.git"
 }
