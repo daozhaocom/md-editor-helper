@@ -3,7 +3,7 @@
   "displayName": "md-editor-helper",
   "description": "Writing markdown easier, make markdown stronger",
   "icon": "./images/icon128x128.png",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.81.0"
   },
