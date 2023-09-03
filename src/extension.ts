@@ -10,7 +10,7 @@ function initialHanlder() {
 	vscode.workspace.getConfiguration().update("markdown.styles", [ "https://socialsimulation.net/css/post.min.css"], vscode.ConfigurationTarget.Workspace).then(() => {
 		vscode.window.showInformationMessage('Initialzized success md-editor-helper!');
 	}, (err) => {
-		vscode.window.showInformationMessage('Initialzized error md-editor-helper! ' + err.message);
+		vscode.window.showErrorMessage('Initialzized error md-editor-helper! ' + err.message);
 	});
 }
 export function activate(context: vscode.ExtensionContext) {
@@ -32,35 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// Display a message box to the user
 		initialHanlder();
 	});
-	// 选中字符反转
-	const contextReverseDisposable = vscode.commands.registerCommand('md-editor-helper.context.reverse', async () => {
-		const editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;  // No open text editor
-		}
-		const document = editor.document;
-		const selection = editor.selection;
-		// Get the word within the selection
-		const word = document.getText(selection);
-		const reversed = word.split('').reverse().join('');
-		editor.edit(editBuilder => {
-			editBuilder.replace(selection, reversed);
-		});
-	});
-	// 选中字符加粗
-	const contextBoldDisposable = vscode.commands.registerCommand('md-editor-helper.context.bold', async () => {
-		const editor = vscode.window.activeTextEditor;
-		if (!editor) {
-			return;  // No open text editor
-		}
-		const document = editor.document;
-		const selection = editor.selection;
-		// Get the word within the selection
-		const word = document.getText(selection);
-		editor.edit(editBuilder => {
-			editBuilder.replace(selection, `**${word}**`);
-		});
-	});
+
 	// 子菜单命令集合
 	const subMenuCommandList = [
 		// 选中字符反转
