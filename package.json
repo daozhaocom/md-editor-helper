@@ -3,34 +3,34 @@
   "displayName": "md-editor-helper",
   "description": "Writing markdown easier, make markdown stronger",
   "icon": "./images/icon128x128.png",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.81.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "md-editor-helper.helloWorld",
-        "title": "Hello World"
+        "command": "md-editor-helper.main",
+        "title": "Markdown Helper"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "md-editor-helper.helloWorld",
-          "alt": "md-editor-helper.helloWorld",
+          "command": "md-editor-helper.main",
+          "alt": "md-editor-helper.main",
           "group": "navigation"
         }
       ],
       "editor/context": [
         {
-          "command": "md-editor-helper.helloWorld",
-          "alt": "md-editor-helper.helloWorld",
+          "command": "md-editor-helper.main",
+          "alt": "md-editor-helper.main",
           "group": "navigation"
         }
       ]
