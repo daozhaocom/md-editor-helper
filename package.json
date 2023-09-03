@@ -25,6 +25,10 @@
       {
         "command": "md-editor-helper.context.bold",
         "title": "Bold"
+      },
+      {
+        "command": "md-editor-helper.context.postCreate",
+        "title": "Post Create"
       }
     ],
     "menus": {
@@ -48,6 +52,10 @@
       }, {
         "command": "md-editor-helper.context.bold",
         "alt": "md-editor-helper.context.bold",
+        "group": "navigation"
+      }, {
+        "command": "md-editor-helper.context.postCreate",
+        "alt": "md-editor-helper.context.postCreate",
         "group": "navigation"
       }]
     },

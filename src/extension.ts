@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { formatDate } from './utils';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -62,6 +63,26 @@ export function activate(context: vscode.ExtensionContext) {
 			const word = document.getText(selection);
 			editor.edit(editBuilder => {
 				editBuilder.replace(selection, `**${word}**`);
+			});
+		}),
+		// 新建post
+		vscode.commands.registerCommand('md-editor-helper.context.postCreate', async () => {
+			const editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				return;  // No open text editor
+			}
+			const document = editor.document;
+			const selection = editor.selection;
+			// Get the word within the selection
+			const word = document.getText(selection);
+			editor.edit(editBuilder => {
+				editBuilder.replace(selection, `---\n` +
+				`date: ${formatDate('YYYY_MM_DD HH:mm:ss')}\n` +
+				`title: ${word}\n` +
+				`categories: \n` +
+				`- [news]\n` +
+				`thumbnail_in_body: \n` +
+				`---\n`);
 			});
 		}),
 	];
