@@ -3,7 +3,7 @@
   "displayName": "md-editor-helper",
   "description": "Writing markdown easier, make markdown stronger",
   "icon": "./images/icon128x128.png",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -13,17 +13,6 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "configuration":[
-      {
-        "title": "markdown",
-        "properties": {
-          "markdown.styles": {
-            "default": "https://socialsimulation.net/css/post.min.css",
-            "description": "over."
-          }
-        }
-      }
-    ],
     "commands": [
       {
         "command": "md-editor-helper.helloWorld",
