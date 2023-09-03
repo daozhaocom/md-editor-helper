@@ -3,7 +3,7 @@
   "displayName": "md-editor-helper",
   "description": "Writing markdown easier, make markdown stronger",
   "icon": "./images/icon128x128.png",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -17,6 +17,14 @@
       {
         "command": "md-editor-helper.main",
         "title": "Markdown Helper"
+      },
+      {
+        "command": "md-editor-helper.context.reverse",
+        "title": "Reverse"
+      },
+      {
+        "command": "md-editor-helper.context.bold",
+        "title": "Bold"
       }
     ],
     "menus": {
@@ -29,12 +37,26 @@
       ],
       "editor/context": [
         {
-          "command": "md-editor-helper.main",
-          "alt": "md-editor-helper.main",
+          "submenu": "Markdown Helper",
           "group": "navigation"
         }
-      ]
+      ],
+      "Markdown Helper": [{
+        "command": "md-editor-helper.context.reverse",
+        "alt": "md-editor-helper.context.reverse",
+        "group": "navigation"
+      }, {
+        "command": "md-editor-helper.context.bold",
+        "alt": "md-editor-helper.context.bold",
+        "group": "navigation"
+      }]
     },
+    "submenus": [
+      {
+        "id": "Markdown Helper",
+        "label": "Markdown Helper"
+      }
+    ],
     "snippets": [
       {
         "language": "markdown",
