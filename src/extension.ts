@@ -46,9 +46,9 @@ export function activate(context: vscode.ExtensionContext) {
 			const selection = editor.selection;
 			// Get the word within the selection
 			const word = document.getText(selection);
-			const reversed = word.split('').reverse().join('');
+			const text = word.split('').reverse().join('');
 			editor.edit(editBuilder => {
-				editBuilder.replace(selection, reversed);
+				editBuilder.replace(selection, text);
 			});
 		}),
 		// 选中字符加粗
@@ -64,6 +64,24 @@ export function activate(context: vscode.ExtensionContext) {
 			editor.edit(editBuilder => {
 				editBuilder.replace(selection, `**${word}**`);
 			});
+		}),
+		// 选中字符加粗取消
+		vscode.commands.registerCommand('md-editor-helper.context.boldCancel', async () => {
+			const editor = vscode.window.activeTextEditor;
+			if (!editor) {
+				return;  // No open text editor
+			}
+			const document = editor.document;
+			const selection = editor.selection;
+			// Get the word within the selection
+			const word = document.getText(selection);
+			const regex = /\*\*(.+)\*\*/;
+			if (regex.test(word)) {
+				const text = word.replace(regex, '$1');
+				editor.edit(editBuilder => {
+					editBuilder.replace(selection, text);
+				});
+			}
 		}),
 		// 新建post
 		vscode.commands.registerCommand('md-editor-helper.context.postCreate', async () => {

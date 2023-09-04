@@ -27,6 +27,10 @@
         "title": "Bold"
       },
       {
+        "command": "md-editor-helper.context.boldCancel",
+        "title": "Unbold"
+      },
+      {
         "command": "md-editor-helper.context.postCreate",
         "title": "Post Create"
       }
@@ -52,6 +56,10 @@
       }, {
         "command": "md-editor-helper.context.bold",
         "alt": "md-editor-helper.context.bold",
+        "group": "navigation"
+      }, {
+        "command": "md-editor-helper.context.boldCancel",
+        "alt": "md-editor-helper.context.boldCancel",
         "group": "navigation"
       }, {
         "command": "md-editor-helper.context.postCreate",
