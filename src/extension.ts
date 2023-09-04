@@ -58,15 +58,15 @@ export function activate(context: vscode.ExtensionContext) {
 	// 子菜单命令集合
 	const subMenuCommandList = [
 		// 选中字符反转
-		vscode.commands.registerCommand('md-editor-helper.context.reverse', async () => {
+		vscode.commands.registerCommand('md-editor-helper.context.reverse', () => {
 			editorSelectionReplacer(word => word.split('').reverse().join(''));
 		}),
 		// 选中字符加粗
-		vscode.commands.registerCommand('md-editor-helper.context.bold', async () => {
+		vscode.commands.registerCommand('md-editor-helper.context.bold', () => {
 			editorSelectionReplacer(word => `**${word}**`);
 		}),
 		// 选中字符加粗取消
-		vscode.commands.registerCommand('md-editor-helper.context.boldCancel', async () => {
+		vscode.commands.registerCommand('md-editor-helper.context.boldCancel', () => {
 			editorSelectionReplacer(word => {
 				const regex = /\*\*(.+)\*\*/;
 				if (regex.test(word)) {
@@ -75,36 +75,38 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}),
 		// 无序列表
-		vscode.commands.registerCommand('md-editor-helper.context.listUnsorted', async () => {
+		vscode.commands.registerCommand('md-editor-helper.context.listUnsorted', () => {
 			editorSelectionReplacer(word => `- ${word}`);
 		}),
 		// 有序列表
-		vscode.commands.registerCommand('md-editor-helper.context.listSorted', async () => {
+		vscode.commands.registerCommand('md-editor-helper.context.listSorted', () => {
 			editorSelectionReplacer(word => `1. ${word}`);
 		}),
 		// 新建post
-		vscode.commands.registerCommand('md-editor-helper.context.postCreate', async () => {
-			const editor = vscode.window.activeTextEditor;
-			if (!editor) {
-				return;  // No open text editor
-			}
-			const document = editor.document;
-			const selection = editor.selection;
-			// Get the word within the selection
-			const word = document.getText(selection);
-			editor.edit(editBuilder => {
-				editBuilder.replace(selection, `---\n` +
+		vscode.commands.registerCommand('md-editor-helper.context.postCreate', () => {
+			editorSelectionReplacer(word => 
+				`\n` +
+				`---\n` +
 				`date: ${formatDate('YYYY_MM_DD HH:mm:ss')}\n` +
 				`title: ${word}\n` +
 				`categories: \n` +
 				`- [news]\n` +
 				`thumbnail_in_body: \n` +
-				`---\n`);
-			});
+				`---\n`
+			);
 		}),
 	];
 
 	context.subscriptions.push(mainDisposable, ...subMenuCommandList);
+
+	vscode.languages.registerHoverProvider('markdown', {
+		provideHover(document, position, token) {
+			console.log('aa', document, position, token)
+			return {
+				contents: ['Hover Content']
+			};
+		}
+	  });
 }
 
 // This method is called when your extension is deactivated
