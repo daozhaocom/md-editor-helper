@@ -14,6 +14,27 @@ function initialHanlder() {
 		vscode.window.showErrorMessage('Initialzized error md-editor-helper! ' + err.message);
 	});
 }
+/**
+ * 替换编辑器选中词
+ * @param replacer(word)
+ * @returns string | undefined
+ */
+function editorSelectionReplacer(replacer: (word: string) => string | undefined) {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		return;  // No open text editor
+	}
+	const document = editor.document;
+	const selection = editor.selection;
+	// Get the word within the selection
+	const word = document.getText(selection);
+	const text = replacer(word);
+	if (text) {
+		editor.edit(editBuilder => {
+			editBuilder.replace(selection, text);
+		});
+	}
+}
 export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -38,50 +59,28 @@ export function activate(context: vscode.ExtensionContext) {
 	const subMenuCommandList = [
 		// 选中字符反转
 		vscode.commands.registerCommand('md-editor-helper.context.reverse', async () => {
-			const editor = vscode.window.activeTextEditor;
-			if (!editor) {
-				return;  // No open text editor
-			}
-			const document = editor.document;
-			const selection = editor.selection;
-			// Get the word within the selection
-			const word = document.getText(selection);
-			const text = word.split('').reverse().join('');
-			editor.edit(editBuilder => {
-				editBuilder.replace(selection, text);
-			});
+			editorSelectionReplacer(word => word.split('').reverse().join(''));
 		}),
 		// 选中字符加粗
 		vscode.commands.registerCommand('md-editor-helper.context.bold', async () => {
-			const editor = vscode.window.activeTextEditor;
-			if (!editor) {
-				return;  // No open text editor
-			}
-			const document = editor.document;
-			const selection = editor.selection;
-			// Get the word within the selection
-			const word = document.getText(selection);
-			editor.edit(editBuilder => {
-				editBuilder.replace(selection, `**${word}**`);
-			});
+			editorSelectionReplacer(word => `**${word}**`);
 		}),
 		// 选中字符加粗取消
 		vscode.commands.registerCommand('md-editor-helper.context.boldCancel', async () => {
-			const editor = vscode.window.activeTextEditor;
-			if (!editor) {
-				return;  // No open text editor
-			}
-			const document = editor.document;
-			const selection = editor.selection;
-			// Get the word within the selection
-			const word = document.getText(selection);
-			const regex = /\*\*(.+)\*\*/;
-			if (regex.test(word)) {
-				const text = word.replace(regex, '$1');
-				editor.edit(editBuilder => {
-					editBuilder.replace(selection, text);
-				});
-			}
+			editorSelectionReplacer(word => {
+				const regex = /\*\*(.+)\*\*/;
+				if (regex.test(word)) {
+					return word.replace(regex, '$1');
+				}
+			});
+		}),
+		// 无序列表
+		vscode.commands.registerCommand('md-editor-helper.context.listUnsorted', async () => {
+			editorSelectionReplacer(word => `- ${word}`);
+		}),
+		// 有序列表
+		vscode.commands.registerCommand('md-editor-helper.context.listSorted', async () => {
+			editorSelectionReplacer(word => `1. ${word}`);
 		}),
 		// 新建post
 		vscode.commands.registerCommand('md-editor-helper.context.postCreate', async () => {

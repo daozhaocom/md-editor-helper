@@ -28,7 +28,15 @@
       },
       {
         "command": "md-editor-helper.context.boldCancel",
-        "title": "Unbold"
+        "title": "Bold Cancel"
+      },
+      {
+        "command": "md-editor-helper.context.listUnsorted",
+        "title": "List Unsorted"
+      },
+      {
+        "command": "md-editor-helper.context.listSorted",
+        "title": "List Sorted"
       },
       {
         "command": "md-editor-helper.context.postCreate",
@@ -53,15 +61,28 @@
         "command": "md-editor-helper.context.reverse",
         "alt": "md-editor-helper.context.reverse",
         "group": "navigation"
-      }, {
+      },
+      {
         "command": "md-editor-helper.context.bold",
         "alt": "md-editor-helper.context.bold",
         "group": "navigation"
-      }, {
+      },
+      {
         "command": "md-editor-helper.context.boldCancel",
         "alt": "md-editor-helper.context.boldCancel",
         "group": "navigation"
-      }, {
+      },
+      {
+        "command": "md-editor-helper.context.listUnsorted",
+        "alt": "md-editor-helper.context.listUnsorted",
+        "group": "navigation"
+      },
+      {
+        "command": "md-editor-helper.context.listSorted",
+        "alt": "md-editor-helper.context.listSorted",
+        "group": "navigation"
+      },
+      {
         "command": "md-editor-helper.context.postCreate",
         "alt": "md-editor-helper.context.postCreate",
         "group": "navigation"
