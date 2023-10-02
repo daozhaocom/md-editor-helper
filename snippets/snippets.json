@@ -51,5 +51,37 @@
             "<div style=\"font-size: 22px\">$1</div>"
         ],
         "description": "设置字号"
+    },
+    "文字居左" : {
+        "scope": "markdown",
+        "prefix": "posttextleft", 
+        "body": [
+            "<div class=\"post_textAlign_left\">$1</div>"
+        ],
+        "description": "文字居左"
+    },
+    "文字居右" : {
+        "scope": "markdown",
+        "prefix": "posttextright", 
+        "body": [
+            "<div class=\"post_textAlign_right\">$1</div>"
+        ],
+        "description": "文字居右"
+    },
+    "文字居中" : {
+        "scope": "markdown",
+        "prefix": "posttextcenter", 
+        "body": [
+            "<div class=\"post_textAlign_center\">$1</div>"
+        ],
+        "description": "文字居中"
+    },
+    "文字两头对齐" : {
+        "scope": "markdown",
+        "prefix": "posttextjustify", 
+        "body": [
+            "<div class=\"post_textAlign_justify\">$1</div>"
+        ],
+        "description": "文字两头对齐"
     }
 }
