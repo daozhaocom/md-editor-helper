@@ -3,7 +3,7 @@
   "displayName": "md-editor-helper",
   "description": "Writing markdown easier, make markdown stronger",
   "icon": "./images/icon128x128.png",
-  "version": "0.0.7",
+  "version": "0.0.10",
   "engines": {
     "vscode": "^1.81.0"
   },
@@ -20,27 +20,27 @@
       },
       {
         "command": "md-editor-helper.context.reverse",
-        "title": "Reverse"
+        "title": "MEH Reverse"
       },
       {
         "command": "md-editor-helper.context.bold",
-        "title": "Bold"
+        "title": "MEH Bold"
       },
       {
         "command": "md-editor-helper.context.boldCancel",
-        "title": "Bold Cancel"
+        "title": "MEH Bold Cancel"
       },
       {
         "command": "md-editor-helper.context.listUnsorted",
-        "title": "List Unsorted"
+        "title": "MEH List Unsorted"
       },
       {
         "command": "md-editor-helper.context.listSorted",
-        "title": "List Sorted"
+        "title": "MEH List Sorted"
       },
       {
         "command": "md-editor-helper.context.postCreate",
-        "title": "Post Create"
+        "title": "MEH Post Create"
       }
     ],
     "menus": {
