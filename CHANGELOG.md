@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.7] - 2023-09-03
+## [0.0.10] - 2024-08-13
 
-### Added
+- 回归更新
+- 加入对齐方式
+
+## [0.0.7] - 2023-09-03
 
 - 优化右键子菜单注册
 
