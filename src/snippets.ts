@@ -1,0 +1,91 @@
+type data: {
+    
+}
+
+export const snippetsJson : object =  {  
+        "新建post" : {
+            "scope": "markdown",
+            "prefix": "postcreate", 
+            "body": [  
+                "---",
+                "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+                "title: \"$1\"",
+                "categories: $2",
+                "- [news]",
+                "thumbnail_in_body: ",
+                "---",
+                ""
+            ],
+            "description": "post模板"
+        },
+        "水平竖直居中" : {
+            "scope": "markdown",
+            "prefix": "postcc", 
+            "body": [  
+                "<div class=\"post_flex_center_center\">$1</div>"
+            ],
+            "description": "水平竖直居中描述"
+        },
+        "插入居中配图" : {
+            "scope": "markdown",
+            "prefix": "postimg", 
+            "body": [  
+                "<div class=\"p_center\">",
+                "  <img class=\"post_block-item\" style=\"max-width: 80%;margin-bottom: 16px;\" src=\"$1\">",
+                "</div>"
+            ],
+            "description": "插入居中配图"
+        },
+        "缩进" : {
+            "scope": "markdown",
+            "prefix": "postintend", 
+            "body": [  
+                "<div class=\"post_paddingLeftIntend2\">",
+                "  <div class=\"post_listIntend2\" data-num=\"a.\">",
+                "    $1",
+                "  </div>",
+                "</div>"
+            ],
+            "description": "缩进2个字符"
+        },
+        "字号" : {
+            "scope": "markdown",
+            "prefix": "postfont", 
+            "body": [
+                "<div style=\"font-size: 22px\">$1</div>"
+            ],
+            "description": "设置字号"
+        },
+        "文字居左" : {
+            "scope": "markdown",
+            "prefix": "posttextleft", 
+            "body": [
+                "<div class=\"post_textAlign_left\">$1</div>"
+            ],
+            "description": "文字居左"
+        },
+        "文字居右" : {
+            "scope": "markdown",
+            "prefix": "posttextright", 
+            "body": [
+                "<div class=\"post_textAlign_right\">$1</div>"
+            ],
+            "description": "文字居右"
+        },
+        "文字居中" : {
+            "scope": "markdown",
+            "prefix": "posttextcenter", 
+            "body": [
+                "<div class=\"post_textAlign_center\">$1</div>"
+            ],
+            "description": "文字居中"
+        },
+        "文字两头对齐" : {
+            "scope": "markdown",
+            "prefix": "posttextjustify", 
+            "body": [
+                "<div class=\"post_textAlign_justify\">$1</div>"
+            ],
+            "description": "文字两头对齐"
+        }
+}

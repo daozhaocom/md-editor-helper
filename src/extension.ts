@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { formatDate } from './utils';
+import { snippetsJson } from './snippets';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -82,20 +83,28 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('md-editor-helper.context.listSorted', () => {
 			editorSelectionReplacer(word => `1. ${word}`);
 		}),
-		// 新建post
-		vscode.commands.registerCommand('md-editor-helper.context.postCreate', () => {
-			editorSelectionReplacer(word => 
-				`\n` +
-				`---\n` +
-				`date: ${formatDate('YYYY_MM_DD HH:mm:ss')}\n` +
-				`title: ${word}\n` +
-				`categories: \n` +
-				`- [news]\n` +
-				`thumbnail_in_body: \n` +
-				`---\n`
-			);
-		}),
 	];
+
+	// const snippetsJson = snippets();
+	const snippetsList = Object.keys(snippetsJson);
+
+	const dateStr = formatDate('YYYY_MM_DD HH:mm:ss');
+
+	snippetsList.forEach(item => {
+		const snippets = snippetsJson[item];
+		const body: Array<string> = snippets.body;
+		const command = vscode.commands.registerCommand(`md-editor-helper.context.${snippets.prefix}`, () => {
+			const bodyResult = body.map(it => {
+				return it.replace('$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND', dateStr)
+						.replace(/(\$$[^1]+)/, '');
+			});
+
+			editorSelectionReplacer(word => bodyResult.join('\n').replace('$1', word));
+		});
+
+		subMenuCommandList.push(command);
+	});
+
 
 	context.subscriptions.push(mainDisposable, ...subMenuCommandList);
 
