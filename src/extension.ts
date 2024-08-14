@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { formatDate } from './utils';
-import { snippetsJson } from './snippets';
+import snippetList from './snippetList.json';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -36,6 +36,7 @@ function editorSelectionReplacer(replacer: (word: string) => string | undefined)
 		});
 	}
 }
+
 export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -63,9 +64,9 @@ export function activate(context: vscode.ExtensionContext) {
 			editorSelectionReplacer(word => word.split('').reverse().join(''));
 		}),
 		// 选中字符加粗
-		vscode.commands.registerCommand('md-editor-helper.context.bold', () => {
-			editorSelectionReplacer(word => `**${word}**`);
-		}),
+		// vscode.commands.registerCommand('md-editor-helper.context.bold', () => {
+		// 	editorSelectionReplacer(word => `**${word}**`);
+		// }),
 		// 选中字符加粗取消
 		vscode.commands.registerCommand('md-editor-helper.context.boldCancel', () => {
 			editorSelectionReplacer(word => {
@@ -76,30 +77,33 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}),
 		// 无序列表
-		vscode.commands.registerCommand('md-editor-helper.context.listUnsorted', () => {
-			editorSelectionReplacer(word => `- ${word}`);
-		}),
+		// vscode.commands.registerCommand('md-editor-helper.context.listUnsorted', () => {
+		// 	editorSelectionReplacer(word => `- ${word}`);
+		// }),
 		// 有序列表
-		vscode.commands.registerCommand('md-editor-helper.context.listSorted', () => {
-			editorSelectionReplacer(word => `1. ${word}`);
-		}),
+		// vscode.commands.registerCommand('md-editor-helper.context.listSorted', () => {
+		// 	editorSelectionReplacer(word => `1. ${word}`);
+		// }),
 	];
-
-	// const snippetsJson = snippets();
-	const snippetsList = Object.keys(snippetsJson);
 
 	const dateStr = formatDate('YYYY_MM_DD HH:mm:ss');
 
-	snippetsList.forEach(item => {
-		const snippets = snippetsJson[item];
-		const body: Array<string> = snippets.body;
-		const command = vscode.commands.registerCommand(`md-editor-helper.context.${snippets.prefix}`, () => {
+	snippetList.forEach(item => {
+		const body: Array<string> | undefined = item.body || [];
+		if (body.length === 0) {
+			return;
+		}
+		const command = vscode.commands.registerCommand(`md-editor-helper.context.${item.prefix}`, () => {
 			const bodyResult = body.map(it => {
 				return it.replace('$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND', dateStr)
 						.replace(/(\$$[^1]+)/, '');
 			});
 
-			editorSelectionReplacer(word => bodyResult.join('\n').replace('$1', word));
+			editorSelectionReplacer(word => {
+				const text = bodyResult.join('\n').replace('$1', word);
+				return `${text}`;
+				return `${text} ${word}`
+			});
 		});
 
 		subMenuCommandList.push(command);

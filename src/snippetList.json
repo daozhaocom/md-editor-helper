@@ -1,0 +1,140 @@
+[
+    {
+        "prefix": "reverse", 
+        "body": [],
+        "type": ["command", "submenu"],
+        "title": "MEH reverse",
+        "description": "选中字符反转"
+    },
+    {
+        "prefix": "bold", 
+        "body": ["**$1**"],
+        "type": ["command", "submenu"],
+        "title": "MEH bold",
+        "description": "选中加粗"
+    },
+    {
+        "prefix": "boldCancel", 
+        "body": [],
+        "type": ["command", "submenu"],
+        "title": "MEH boldCancel",
+        "description": "选中取消加粗"
+    },
+    {
+        "prefix": "listUnsorted", 
+        "body": ["- $1"],
+        "type": ["command", "submenu"],
+        "title": "MEH listUnsorted",
+        "description": "无序列表"
+    },
+    {
+        "prefix": "listSorted", 
+        "body": ["1. $1"],
+        "type": ["command", "submenu"],
+        "title": "MEH listSorted",
+        "description": "有序列表"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "postcreate", 
+        "body": [  
+            "---",
+            "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+            "title: \"$1\"",
+            "categories: $2",
+            "- [news]",
+            "thumbnail_in_body: ",
+            "---",
+            ""
+        ],
+        "type": ["command", "submenu"],
+        "title": "MEH Post Create",
+        "description": "新建post"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "postcc", 
+        "body": [  
+            "<div class=\"post_flex_center_center\">$1</div>"
+        ],
+        "type": ["command", "submenu"],
+        "title": "MEH Post CenterCenter",
+        "description": "水平竖直居中"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "postimg", 
+        "body": [  
+            "<div class=\"p_center\">",
+            "  <img class=\"post_block-item\" style=\"max-width: 80%;margin-bottom: 16px;\" src=\"$1\">",
+            "</div>"
+        ],
+        "type": ["command", "submenu"],
+        "title": "MEH ImgCenter",
+        "description": "插入居中配图"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "postintend", 
+        "body": [  
+            "<div class=\"post_paddingLeftIntend2\">",
+            "  <div class=\"post_listIntend2\" data-num=\"a.\">",
+            "    $1",
+            "  </div>",
+            "</div>"
+        ],
+        "type": ["command", "submenu"],
+        "title": "MEH Intend2",
+        "description": "缩进2个字符"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "postfont", 
+        "body": [
+            "<div style=\"font-size: 22px\">$1</div>"
+        ],
+        "type": ["command", "submenu"],
+        "title": "MEH Font",
+        "description": "设置字号"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "posttextleft", 
+        "body": [
+            "<div class=\"post_textAlign_left\">$1</div>"
+        ],
+        "type": ["command"],
+        "title": "MEH TextLeft",
+        "description": "文字居左"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "posttextright", 
+        "body": [
+            "<div class=\"post_textAlign_right\">$1</div>"
+        ],
+        "type": ["command"],
+        "title": "MEH TextRight",
+        "description": "文字居右"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "posttextcenter", 
+        "body": [
+            "<div class=\"post_textAlign_center\">$1</div>"
+        ],
+        "type": ["command"],
+        "title": "MEH TextCenter",
+        "description": "文字居中"
+    },
+    {
+        "scope": "markdown",
+        "prefix": "posttextjustify", 
+        "body": [
+            "<div class=\"post_textAlign_justify\">$1</div>"
+        ],
+        "type": ["command"],
+        "title": "MEH TextJustify",
+        "description": "文字两头对齐"
+    }
+]

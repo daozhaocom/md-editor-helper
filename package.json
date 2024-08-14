@@ -10,7 +10,9 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["onLanguage"],
+  "activationEvents": [
+    "onLanguage"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -20,27 +22,59 @@
       },
       {
         "command": "md-editor-helper.context.reverse",
-        "title": "MEH Reverse"
+        "title": "MEH reverse"
       },
       {
         "command": "md-editor-helper.context.bold",
-        "title": "MEH Bold"
+        "title": "MEH bold"
       },
       {
         "command": "md-editor-helper.context.boldCancel",
-        "title": "MEH Bold Cancel"
+        "title": "MEH boldCancel"
       },
       {
         "command": "md-editor-helper.context.listUnsorted",
-        "title": "MEH List Unsorted"
+        "title": "MEH listUnsorted"
       },
       {
         "command": "md-editor-helper.context.listSorted",
-        "title": "MEH List Sorted"
+        "title": "MEH listSorted"
       },
       {
-        "command": "md-editor-helper.context.postCreate",
+        "command": "md-editor-helper.context.postcreate",
         "title": "MEH Post Create"
+      },
+      {
+        "command": "md-editor-helper.context.postcc",
+        "title": "MEH Post CenterCenter"
+      },
+      {
+        "command": "md-editor-helper.context.postimg",
+        "title": "MEH ImgCenter"
+      },
+      {
+        "command": "md-editor-helper.context.postintend",
+        "title": "MEH Intend2"
+      },
+      {
+        "command": "md-editor-helper.context.postfont",
+        "title": "MEH Font"
+      },
+      {
+        "command": "md-editor-helper.context.posttextleft",
+        "title": "MEH TextLeft"
+      },
+      {
+        "command": "md-editor-helper.context.posttextright",
+        "title": "MEH TextRight"
+      },
+      {
+        "command": "md-editor-helper.context.posttextcenter",
+        "title": "MEH TextCenter"
+      },
+      {
+        "command": "md-editor-helper.context.posttextjustify",
+        "title": "MEH TextJustify"
       }
     ],
     "menus": {
@@ -57,47 +91,63 @@
           "group": "navigation"
         }
       ],
-      "Markdown Helper": [{
-        "command": "md-editor-helper.context.reverse",
-        "alt": "md-editor-helper.context.reverse",
-        "group": "navigation"
-      },
-      {
-        "command": "md-editor-helper.context.bold",
-        "alt": "md-editor-helper.context.bold",
-        "group": "navigation"
-      },
-      {
-        "command": "md-editor-helper.context.boldCancel",
-        "alt": "md-editor-helper.context.boldCancel",
-        "group": "navigation"
-      },
-      {
-        "command": "md-editor-helper.context.listUnsorted",
-        "alt": "md-editor-helper.context.listUnsorted",
-        "group": "navigation"
-      },
-      {
-        "command": "md-editor-helper.context.listSorted",
-        "alt": "md-editor-helper.context.listSorted",
-        "group": "navigation"
-      },
-      {
-        "command": "md-editor-helper.context.postCreate",
-        "alt": "md-editor-helper.context.postCreate",
-        "group": "navigation"
-      }]
+      "Markdown Helper": [
+        {
+          "command": "md-editor-helper.context.reverse",
+          "alt": "md-editor-helper.context.reverse",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.bold",
+          "alt": "md-editor-helper.context.bold",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.boldCancel",
+          "alt": "md-editor-helper.context.boldCancel",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.listUnsorted",
+          "alt": "md-editor-helper.context.listUnsorted",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.listSorted",
+          "alt": "md-editor-helper.context.listSorted",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.postcreate",
+          "alt": "md-editor-helper.context.postcreate",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.postcc",
+          "alt": "md-editor-helper.context.postcc",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.postimg",
+          "alt": "md-editor-helper.context.postimg",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.postintend",
+          "alt": "md-editor-helper.context.postintend",
+          "group": "navigation"
+        },
+        {
+          "command": "md-editor-helper.context.postfont",
+          "alt": "md-editor-helper.context.postfont",
+          "group": "navigation"
+        }
+      ]
     },
     "submenus": [
       {
         "id": "Markdown Helper",
         "label": "Markdown Helper"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "markdown",
-        "path": "./snippets/snippets.json"
       }
     ]
   },
@@ -107,6 +157,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
+    "generate": "node generatePkg.js",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
