@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.11] - 2024-08-14
+
+- 加入文章编辑常用排版指令
+
 ## [0.0.10] - 2024-08-13
 
 - 回归更新
